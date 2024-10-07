@@ -3,6 +3,7 @@ package com.example.oopsimle
 import android.os.Bundle
 import android.view.View
 import android.view.View.OnClickListener
+import android.view.View.OnLongClickListener
 import android.widget.ImageView
 import android.widget.TextView
 import androidx.activity.enableEdgeToEdge
@@ -10,7 +11,7 @@ import androidx.appcompat.app.AppCompatActivity
 import androidx.core.view.ViewCompat
 import androidx.core.view.WindowInsetsCompat
 
-class MainActivity : AppCompatActivity(),OnClickListener {
+class MainActivity : AppCompatActivity(),OnClickListener,OnLongClickListener {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         enableEdgeToEdge()
@@ -35,6 +36,7 @@ class MainActivity : AppCompatActivity(),OnClickListener {
 
         var img:ImageView = findViewById(R.id.img)
         img.setOnClickListener(this)
+        img.setOnLongClickListener(this)
         txv.setOnClickListener(this)
     }
 
@@ -46,6 +48,12 @@ class MainActivity : AppCompatActivity(),OnClickListener {
         }else {
             txv.text = "咪"
         }
+    }
+
+    override fun onLongClick(v: View?):Boolean {
+        var txv:TextView =findViewById(R.id.txv)
+        txv.text = "咪咪貓貓"
+        return false
     }
 }
 
